@@ -6,6 +6,12 @@ plugins {
 android {
     compileSdkVersion 29
 
+    buildFeatures {
+
+        viewBinding true
+
+    }
+
     defaultConfig {
         applicationId "com.example.countryinfo"
         minSdkVersion 21
@@ -41,4 +47,6 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+
 }
