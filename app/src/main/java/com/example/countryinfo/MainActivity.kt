@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import okhttp3.*
+import org.json.JSONArray
 import java.io.IOException
 
 private const val TAG = "MainActivity"
@@ -44,8 +45,13 @@ class MainActivity : AppCompatActivity() {
 
                         val result = response.body?.string()
 
-                        Log.i(TAG, result)
+                        val jsonArray = JSONArray(result)
 
+                        for (i in 0 until jsonArray.length()) {
+
+                            Log.i(TAG, jsonArray[i].toString())
+
+                        }
 
                     }
 
