@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import okhttp3.*
 import org.json.JSONArray
+import org.json.JSONObject
 import java.io.IOException
 
 private const val TAG = "MainActivity"
@@ -12,6 +13,8 @@ private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
 
     private val client = OkHttpClient()
+
+    private var countryModel = CountryModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +48,11 @@ class MainActivity : AppCompatActivity() {
 
                         val result = response.body?.string()
 
-                        val jsonArray = JSONArray(result)
+                        if (result != null) {
 
-                        for (i in 0 until jsonArray.length()) {
+                            val parseResponse = ParseJsonData().parse(result)
 
-                            Log.i(TAG, jsonArray[i].toString())
+                            countryModel = parseResponse
 
                         }
 

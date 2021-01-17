@@ -2,7 +2,7 @@ package com.example.countryinfo
 
 class CountryModel {
 
-    val countryName = ""
+    var countryName = ""
     val countryDomain = ""
     val countryCapital = ""
     val countryPopulation = ""
