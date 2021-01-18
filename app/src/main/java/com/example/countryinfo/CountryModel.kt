@@ -9,9 +9,9 @@ class CountryModel {
     var countryPopulation = ""
     var countryArea = ""
     var countryCurrencies = ArrayList<String>()
-    val countryMainLanguages = ArrayList<String>()
-    val countryFlagUrl = ""
-    val countryTimeZone = ""
+    var countryMainLanguages = ArrayList<String>()
+    var countryFlagUrl = ""
+    var countryTimeZone = ArrayList<String>()
 
 
 }

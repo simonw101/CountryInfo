@@ -9,7 +9,7 @@ private const val TAG = "ParseJsonData"
 
 class ParseJsonData {
 
-    fun parse(data: String) : CountryModel {
+    fun parse(data: String): CountryModel {
 
         val countryModel = CountryModel()
 
@@ -33,6 +33,8 @@ class ParseJsonData {
 
                 val currencies = jsonArray.getJSONObject(i).getJSONArray("currencies")
 
+                val flagUrl = jsonArray.getJSONObject(i).getString("flag")
+
                 for (i in 0 until currencies.length()) {
 
                     val item = currencies.getJSONObject(i)
@@ -55,6 +57,16 @@ class ParseJsonData {
 
                 }
 
+                val timeZones = jsonArray.getJSONObject(i).getJSONArray("timezones")
+
+                for (i in 0 until timeZones.length()) {
+
+                    val item = timeZones[i] as? String
+
+                    Log.i(TAG, item)
+
+                }
+
 
                 countryModel.countryName = countryName
                 countryModel.countryDomain = countryDomain.toString()
@@ -62,6 +74,7 @@ class ParseJsonData {
                 countryModel.countryCapital = capitalCity
                 countryModel.countryPopulation = formattedNumber(population)
                 countryModel.countryArea = formattedNumber(countryArea)
+                countryModel.countryFlagUrl = flagUrl
 
 
                 Log.i(TAG, countryModel.countryName)
@@ -70,6 +83,8 @@ class ParseJsonData {
                 Log.i(TAG, countryModel.countryCapital)
                 Log.i(TAG, countryModel.countryPopulation)
                 Log.i(TAG, countryModel.countryArea)
+                Log.i(TAG, countryModel.countryFlagUrl)
+
 
             }
 
@@ -83,7 +98,7 @@ class ParseJsonData {
 
     }
 
-    private fun formattedNumber(population: Int) : String {
+    private fun formattedNumber(population: Int): String {
 
         val formatter = DecimalFormat("#,###,###")
 
