@@ -1,7 +1,5 @@
 package com.example.countryinfo
 
-import java.text.DecimalFormat
-
 class CountryModel {
 
     var countryName = ""
@@ -10,9 +8,9 @@ class CountryModel {
     var countryCapital = ""
     var countryPopulation = ""
     var countryArea = ""
-    val countryCurrencies = ""
+    var countryCurrencies = ArrayList<String>()
     val countryMainLanguages = ArrayList<String>()
-    val countryUrl = ""
+    val countryFlagUrl = ""
     val countryTimeZone = ""
 
 

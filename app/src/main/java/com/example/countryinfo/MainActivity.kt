@@ -2,13 +2,8 @@ package com.example.countryinfo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import okhttp3.*
-import org.json.JSONArray
-import org.json.JSONObject
 import java.io.IOException
-
-private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val url = "https://restcountries.eu/rest/v2/all"
+        val url = getString(R.string.url)
 
         try {
             run(url)

@@ -4,13 +4,10 @@ import android.util.Log
 import org.json.JSONArray
 import org.json.JSONException
 import java.text.DecimalFormat
-import kotlin.reflect.typeOf
 
 private const val TAG = "ParseJsonData"
 
 class ParseJsonData {
-
-    var countryArea :Int? = null
 
     fun parse(data: String) : CountryModel {
 
@@ -32,7 +29,31 @@ class ParseJsonData {
 
                 val population = jsonArray.getJSONObject(i).getInt("population")
 
-                countryArea = jsonArray.getJSONObject(i).optInt("area", 0)
+                val countryArea = jsonArray.getJSONObject(i).optInt("area", 0)
+
+                val currencies = jsonArray.getJSONObject(i).getJSONArray("currencies")
+
+                for (i in 0 until currencies.length()) {
+
+                    val item = currencies.getJSONObject(i)
+
+                    Log.i(TAG, item.getString("name"))
+
+                    countryModel.countryCurrencies.add(item.getString("name"))
+
+                }
+
+                val languages = jsonArray.getJSONObject(i).getJSONArray("languages")
+
+                for (i in 0 until languages.length()) {
+
+                    val item = languages.getJSONObject(i)
+
+                    Log.i(TAG, item.getString("name"))
+
+                    countryModel.countryMainLanguages.add(item.getString("name"))
+
+                }
 
 
                 countryModel.countryName = countryName
@@ -40,8 +61,7 @@ class ParseJsonData {
                 countryModel.countryCallingCode = countryCallingCode.toString()
                 countryModel.countryCapital = capitalCity
                 countryModel.countryPopulation = formattedNumber(population)
-                countryModel.countryArea = formattedNumber(countryArea!!)
-
+                countryModel.countryArea = formattedNumber(countryArea)
 
 
                 Log.i(TAG, countryModel.countryName)
